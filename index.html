@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser game</title>
     <link rel="stylesheet" href="/styles/one.css">
-    <script src="logic/InputSystem.js"></script>
-    <script src="logic/Game.js"></script>
+
+    <!-- Input System -->
+    <script src="logic/InputSystem/InputSystem.js"></script>
+    <script src="logic/InputSystem/StartInputSystem.js"></script>
+
 </head>
 
 <body>
     <canvas id="gameWindow"></canvas>
 </body>
+
+<!-- After loading page start game logic -->
+<script src="logic/Game.js"></script>
 
 </html>
