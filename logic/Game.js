@@ -1,6 +1,6 @@
 const fixedUpdateTime = 500; //ms\
 
-function gameLoop() { console.log(input.isKeyPressed("W")) }
+function gameLoop() {}
 
 //rungame
 setInterval(gameLoop, fixedUpdateTime);
