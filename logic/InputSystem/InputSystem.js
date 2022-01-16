@@ -1,47 +1,61 @@
-class Key {
-    static W_keyCode = 87;
-    static S_keyCode = 83;
-    static A_keyCode = 65;
-    static D_keyCode = 68;
-    static E_keyCode = 69;
-    static lshift_keyCode = 16;
-    static space_keyCode = 32;
+class KeyCode
+{
+    static W = 87;
+    static S = 83;
+    static A = 65;
+    static D = 68;
+    static E = 69;
+    static lshift = 16;
+    static space = 32;
+}
 
+class KeyStatus
+{
     static UP = false;
     static DOWN = true;
+}
 
-    constructor(fakeConstantKeyCodeFunction) {
-        //This is function because I wanted to make it constant value
-        this.getKeyCode = fakeConstantKeyCodeFunction;
-        this.status = Key.KEYUP;
+class Key 
+{
+
+    constructor(keyCode) 
+    {
+        this.getKeyCode = () => keyCode;
+        this.status = KeyStatus.UP;
     }
 
-    setDown() {
-        this.status = Key.DOWN;
+    setDown() 
+    {
+        this.status = KeyStatus.DOWN;
     }
 
-    setUp() {
-        this.status = Key.UP;
+    setUp() 
+    {
+        this.status = KeyStatus.UP;
     }
 
-    isPressed() {
+    isPressed() 
+    {
         return this.status;
     }
 }
 
-class Input {
-    constructor() {
+class Input 
+{
+    constructor() 
+    {
         this.keys = new Map();
-        this.keys.set("W", new Key(() => { return Key.W_keyCode; }));
-        this.keys.set("S", new Key(() => { return Key.S_keyCode; }));
-        this.keys.set("A", new Key(() => { return Key.A_keyCode; }));
-        this.keys.set("D", new Key(() => { return Key.D_keyCode; }));
-        this.keys.set("E", new Key(() => { return Key.E_keyCode; }));
-        this.keys.set("lshift", new Key(() => { return Key.lshift_keyCode; }));
-        this.keys.set("space", new Key(() => { return Key.space_keyCode; }));
+        this.keys.set("W", new Key(KeyCode.W));
+        this.keys.set("S", new Key(KeyCode.S));
+        this.keys.set("A", new Key(KeyCode.A));
+        this.keys.set("D", new Key(KeyCode.D));
+        this.keys.set("E", new Key(KeyCode.E));
+        this.keys.set("lshift", new Key(KeyCode.lshift));
+        this.keys.set("space", new Key(KeyCode.space));
     }
 
-    isKeyPressed(keyName) {
+    isKeyPressed(keyName) 
+    {
         return this.keys.get(keyName).isPressed();
     }
 }
@@ -51,4 +65,3 @@ var input = new Input();
 
 // example usage 
 // input.isKeyPressed("W");
-// dont use input.keys fiels... I had no idea how to make them private.
