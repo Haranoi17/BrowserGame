@@ -1,5 +1,5 @@
 function relayKeyUpFromBrowser(event) {
-    input.keys.forEach(key => {
+    game.input.keys.forEach(key => {
         if (event.keyCode == key.getKeyCode()) {
             key.setUp();
         }
@@ -7,7 +7,7 @@ function relayKeyUpFromBrowser(event) {
 }
 
 function relayKeyDownFromBrowser(event) {
-    input.keys.forEach(key => {
+    game.input.keys.forEach(key => {
         if (event.keyCode == key.getKeyCode()) {
             key.setDown();
         }
