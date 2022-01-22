@@ -12,14 +12,14 @@ class Input
         this.keys.set(Key.space, new Key(KeyCode.space));
     }
 
-    isKeyPressed(keyName) 
+    isPressed(keyName) 
     {
         return this.keys.get(keyName).isPressed();
     }
 
-    isClicked(keyName)
+    justPressed(keyName)
     {
-        return this.keys.get(keyName).isClicked();
+        return this.keys.get(keyName).justPressed();
     }
 
     update()

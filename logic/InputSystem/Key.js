@@ -30,7 +30,7 @@ class Key
         return this.status == KeyStatus.DOWN;
     }
 
-    isClicked()
+    justPressed()
     {
         return this.status == KeyStatus.DOWN && this.previousStatus == KeyStatus.UP;
     }
