@@ -8,9 +8,18 @@
     <link rel="stylesheet" href="/styles/one.css">
 
     <!-- Input System -->
-    <script src="logic/InputSystem/InputSystem.js"></script>
-    <script src="logic/InputSystem/StartInputSystem.js"></script>
-
+    <script src="logic/InputSystem/KeyCode.js"></script>
+    <script src="logic/InputSystem/KeyStatus.js"></script>
+    <script src="logic/InputSystem/Key.js"></script>
+    <script src="logic/InputSystem/Input.js"></script>
+    
+    <!-- Audio System -->
+    <script src="logic/AudioSystem/AudioFiles.js"></script>
+    <script src="logic/AudioSystem/SoundPlayer.js"></script>
+    
+    <!-- Game -->
+    <script src="logic/Game/Game.js"></script>
+    
 </head>
 
 <body>
@@ -18,6 +27,7 @@
 </body>
 
 <!-- After loading page start game logic -->
-<script src="logic/Game.js"></script>
-
+<script src="logic/Game/StartupScripts/CreateGameObject.js"></script>
+<script src="logic/Game/StartupScripts/StartInputSystem.js"></script>
+<script src="logic/Game/StartupScripts/StartMainLoop.js"></script>
 </html>
