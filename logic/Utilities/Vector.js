@@ -42,4 +42,9 @@ class Vector
     {
         return new Vector(vec1.x + vec2.x, vec1.y + vec2.y);
     }
+
+    static subtract(vec1, vec2)
+    {
+        return new Vector(vec1.x - vec2.x, vec1.y - vec2.y);
+    }
 }

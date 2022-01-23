@@ -4,6 +4,10 @@ class PlayingState extends GameState
     {
         super();
         this.physicalObject = new Physical();
+        this.camera = new Camera();
+
+        this.image = new Image();
+        this.image.src = "/assets/99824.jpg";
     }
 
     onEnter()
@@ -15,6 +19,7 @@ class PlayingState extends GameState
     {
         super.onUpdate(input, deltaTime);
         this.physicalObject.update(deltaTime);
+        this.camera.update(this.physicalObject, deltaTime);
     }
 
     onExit()
@@ -26,10 +31,11 @@ class PlayingState extends GameState
     {
         let ctx = canvas.getContext('2d');
 
-        ctx.fillStyle='rgb(50,50,50)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(this.image,-500,-500);
+
         ctx.fillStyle = 'rgb(200, 0, 0)';
         ctx.fillRect(this.physicalObject.position.x, this.physicalObject.position.y, 50, 50);
+        this.camera.move(canvas);
     }
 
     handleInput(input)
