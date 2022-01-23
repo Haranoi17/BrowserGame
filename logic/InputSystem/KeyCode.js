@@ -7,5 +7,6 @@ class KeyCode
     static E = 69;
     static lshift = 16;
     static space = 32;
+    static esc = 27;
 }
 

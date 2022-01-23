@@ -7,11 +7,6 @@ class GameState
     {
         this.shouldExit = false;
         this.nextState = GameState.Menu;
-
-        this.canvas = document.getElementById("gameWindow");
-        this.canvas.width = 600;
-        this.canvas.height = 400;
-        this.ctx = this.canvas.getContext("2d");
     }
 
     onEnter(){}
@@ -21,11 +16,17 @@ class GameState
         this.handleInput(input);
     }
 
-    onExit(){this.shouldExit = false;}
+    onExit()
+    {
+        this.shouldExit = false;
+    }
 
-    getNextState(){return this.nextState;}
+    getNextStateType()
+    {
+        return this.nextState;
+    }
 
-    draw(){}
+    draw(canvas){}
 
     handleInput(input){}
 }

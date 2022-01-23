@@ -7,6 +7,7 @@ class Key
     static E = "E";
     static lshift = "lshift";
     static space = "space";
+    static esc = "esc";
     
     constructor(keyCode) 
     {

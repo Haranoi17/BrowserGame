@@ -6,7 +6,10 @@ class PlayingState extends GameState
         this.physicalObject = new Physical();
     }
 
-    onEnter(){console.log("entered Playing");}
+    onEnter()
+    {
+
+    }
     
     onUpdate(input, deltaTime)
     {
@@ -14,14 +17,19 @@ class PlayingState extends GameState
         this.physicalObject.update(deltaTime);
     }
 
-    onExit(){console.log("exited Playing"); super.onExit();}
+    onExit()
+    { 
+        super.onExit();
+    }
 
-    draw()
+    draw(canvas)
     {
-        this.ctx.fillStyle='rgb(50,50,50)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fillStyle = 'rgb(200, 0, 0)';
-        this.ctx.fillRect(this.physicalObject.position.x, this.physicalObject.position.y, 50, 50);
+        let ctx = canvas.getContext('2d');
+
+        ctx.fillStyle='rgb(50,50,50)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgb(200, 0, 0)';
+        ctx.fillRect(this.physicalObject.position.x, this.physicalObject.position.y, 50, 50);
     }
 
     handleInput(input)
@@ -49,7 +57,7 @@ class PlayingState extends GameState
 
         this.physicalObject.applyForce(forceVector);
         
-        if(input.justPressed(Key.space))
+        if(input.justPressed(Key.esc))
         {
             this.shouldExit = true;
             this.nextState = GameState.Menu;

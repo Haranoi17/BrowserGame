@@ -6,11 +6,6 @@ class Vector
         this.y = y;
     }
     
-    dot(other)
-    {
-        return this.x * other.x + this.y * other.y;
-    }
-    
     length()
     {
         return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));

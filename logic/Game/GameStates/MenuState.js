@@ -5,20 +5,27 @@ class MenuState extends GameState
         super();
     }
 
-    onEnter(){console.log("entered Menu");}
+    onEnter(){}
     
     onUpdate(input, deltaTime)
     {
         super.onUpdate(input, deltaTime);
     }
     
-    onExit(){console.log("exited Menu"); super.onExit(); return this.nextState;}
+    onExit()
+    {
+        super.onExit(); 
+        return this.nextState;
+    }
 
-    draw(){}
+    draw(canvas)
+    {
+
+    }
 
     handleInput(input)
     {
-        if(input.justPressed(Key.space))
+        if(input.justPressed(Key.esc))
         {
             this.shouldExit = true;
             this.nextState = GameState.Playing;

@@ -10,6 +10,7 @@ class Input
         this.keys.set(Key.E, new Key(KeyCode.E));
         this.keys.set(Key.lshift, new Key(KeyCode.lshift));
         this.keys.set(Key.space, new Key(KeyCode.space));
+        this.keys.set(Key.esc, new Key(KeyCode.esc));
     }
 
     isPressed(keyName) 

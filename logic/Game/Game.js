@@ -9,12 +9,9 @@ class Game
         this.input = new Input();
         this.timer = new Timer();
         this.soundPlayer = new SoundPlayer();        
-        
-        this.states = new Map();
-        this.states.set(GameState.Menu, new MenuState());
-        this.states.set(GameState.Playing, new PlayingState());
+        this.stateMachine = new StateMachine();
 
-        this.currentState = GameState.Menu;
+        this.setupCanvas();
     }
 
     gameLoop()
@@ -25,8 +22,7 @@ class Game
     
     update()
     {
-        this.updateCurrentState();
-        this.switchStates();
+        this.stateMachine.update(this.input, this.getDeltaTime());
 
         this.input.update();
         this.timer.update();
@@ -34,31 +30,24 @@ class Game
     
     draw()
     {
-        this.drawCurrentState();
-    }
-    
-    updateCurrentState()
-    {
-        this.states.get(this.currentState).onUpdate(this.input, this.getDeltaTime());
-    }
-
-    drawCurrentState()
-    {
-        this.states.get(this.currentState).draw();
-    }
-
-    switchStates()
-    {
-        if( this.states.get(this.currentState).shouldExit)
-        {
-            this.states.get(this.currentState).onExit();
-            this.currentState = this.states.get(this.currentState).getNextState();
-            this.states.get(this.currentState).onEnter();
-        }
+        this.stateMachine.draw(this.getCanvas());
     }
 
     getDeltaTime()
     {
         return this.timer.getDeltaTime();
+    }
+
+    setupCanvas()
+    { 
+        let canvas = document.getElementById("gameWindow");
+        canvas.width = 600;
+        canvas.height = 400;
+    }
+
+    getCanvas()
+    {
+        let canvas = document.getElementById("gameWindow");
+        return canvas;
     }
 }
