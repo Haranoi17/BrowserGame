@@ -1,6 +1,6 @@
-function updateGame()
+function updateGame(): void
 {
-    game.gameLoop()
+    game.gameLoop();
 }
 
 setInterval(updateGame, game.fixedUpdateTime);
