@@ -1,2 +1,2 @@
 # BrowserGame
-Creating game in browser with JavaScript in team
+Creating game in browser with TypeScript with team
