@@ -5,17 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser game</title>
-    <link rel="stylesheet" href="/styles/one.css">
+    <link rel="stylesheet" href="/styles/layout.css">
 
     <!-- Input System -->
-    <script src="logic/InputSystem/KeyCode.js"></script>
-    <script src="logic/InputSystem/KeyStatus.js"></script>
-    <script src="logic/InputSystem/Key.js"></script>
     <script src="logic/InputSystem/Input.js"></script>
     
     <!-- Audio System -->
     <script src="logic/AudioSystem/AudioFiles.js"></script>
     <script src="logic/AudioSystem/SoundPlayer.js"></script>
+    
+    <!-- Utilities -->
+    <script src="logic/Utilities/Other.js"></script>
+    <script src="logic/Utilities/Timer.js"></script>
+    <script src="logic/Utilities/Vector.js"></script>
+    
+    <!-- Game Objects -->
+    <script src="logic/GameObjects/ObjectsInterface/GameObject.js"></script>
+    <script src="logic/GameObjects/Camera.js"></script>
+
+    <!-- Physics System -->
+    <script src="logic/PhysicsSystem/Physical.js"></script>
+
+    <!-- Game States -->
+    <script src="logic/GameStates/StateInterface/GameState.js"></script>
+    <script src="logic/GameStates/Menu/MenuButton.js"></script>
+    <script src="logic/GameStates/Menu/MenuState.js"></script>
+    <script src="logic/GameStates/Playing/PlayingState.js"></script>
+    <script src="logic/GameStates/StateMachine/StateMachine.js"></script>
     
     <!-- Game -->
     <script src="logic/Game/Game.js"></script>
@@ -27,7 +43,7 @@
 </body>
 
 <!-- After loading page start game logic -->
-<script src="logic/Game/StartupScripts/CreateGameObject.js"></script>
-<script src="logic/Game/StartupScripts/StartInputSystem.js"></script>
-<script src="logic/Game/StartupScripts/StartMainLoop.js"></script>
+<script src="logic/StartupScripts/CreateGameObject.js"></script>
+<script src="logic/StartupScripts/StartInputSystem.js"></script>
+<script src="logic/StartupScripts/StartMainLoop.js"></script>
 </html>
