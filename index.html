@@ -19,17 +19,21 @@
     <script src="logic/Utilities/Timer.js"></script>
     <script src="logic/Utilities/Vector.js"></script>
     
+    <!-- Game Objects -->
+    <script src="logic/GameObjects/ObjectsInterface/GameObject.js"></script>
+    <script src="logic/GameObjects/Camera.js"></script>
+
     <!-- Physics System -->
     <script src="logic/PhysicsSystem/Physical.js"></script>
 
-
+    <!-- Game States -->
+    <script src="logic/GameStates/StateInterface/GameState.js"></script>
+    <script src="logic/GameStates/Menu/MenuButton.js"></script>
+    <script src="logic/GameStates/Menu/MenuState.js"></script>
+    <script src="logic/GameStates/Playing/PlayingState.js"></script>
+    <script src="logic/GameStates/StateMachine/StateMachine.js"></script>
+    
     <!-- Game -->
-    <script src="logic/Game/GameStates/GameState.js"></script>
-    <script src="logic/Game/GameStates//Menu/MenuButton.js"></script>
-    <script src="logic/Game/GameStates/Menu/MenuState.js"></script>
-    <script src="logic/Game/GameStates/Playing/Components/Camera/Camera.js"></script>
-    <script src="logic/Game/GameStates/Playing/PlayingState.js"></script>
-    <script src="logic/Game/GameStates/StateMachine.js"></script>
     <script src="logic/Game/Game.js"></script>
     
 </head>
@@ -39,7 +43,7 @@
 </body>
 
 <!-- After loading page start game logic -->
-<script src="logic/Game/StartupScripts/CreateGameObject.js"></script>
-<script src="logic/Game/StartupScripts/StartInputSystem.js"></script>
-<script src="logic/Game/StartupScripts/StartMainLoop.js"></script>
+<script src="logic/StartupScripts/CreateGameObject.js"></script>
+<script src="logic/StartupScripts/StartInputSystem.js"></script>
+<script src="logic/StartupScripts/StartMainLoop.js"></script>
 </html>

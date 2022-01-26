@@ -28,9 +28,9 @@ class PlayingState extends GameState
         ctx.fillRect(this.physicalObject.position.x, this.physicalObject.position.y, 50, 50);
     }
 
-    getObjectPositionForCameraToFollow(): Vector
+    getFocusedObject(): GameObject
     {
-        return this.physicalObject.position;
+        return this.physicalObject;
     }
 
     private handleInput(input: Input): void

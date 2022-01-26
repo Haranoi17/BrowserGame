@@ -1,18 +1,17 @@
-class Camera
+class Camera extends GameObject
 {
-    private position: Vector = new Vector(0, 0);
     private positionOffset: Vector = new Vector(0, 0);
     private zoom: Vector = new Vector(1, 1);
     private speed: Vector = new Vector(10, 10);
 
-
-    update(targetPosition: Vector, canvasSize: Vector, deltaTime: number): void
+    specificUpdate(objectToFollow: GameObject, canvasSize: Vector, deltaTime: number): void
     {
-        this.positionOffset = this.calculateCameraStep(targetPosition, canvasSize, deltaTime);
+        this.positionOffset = this.calculateCameraStep(objectToFollow, canvasSize, deltaTime);
         this.position = Vector.add(this.position, this.positionOffset);
+        this.update(deltaTime);
     }
 
-    move(canvas: HTMLCanvasElement): void
+    draw(canvas: HTMLCanvasElement): void
     {
         let ctx = canvas.getContext('2d');
 
@@ -20,9 +19,9 @@ class Camera
         ctx.scale(this.zoom.x, this.zoom.y);
     }
 
-    calculateCameraStep(targetPosition: Vector, canvasSize: Vector, deltaTime: number): Vector
+    private calculateCameraStep(objectToFollow: GameObject, canvasSize: Vector, deltaTime: number): Vector
     {
-        const vectorFromCameraCenterToObject = Vector.subtract(targetPosition, this.calculateMiddleOfCameraPosition(canvasSize));
+        const vectorFromCameraCenterToObject = Vector.subtract(objectToFollow.position, this.calculateMiddleOfCameraPosition(canvasSize));
         const vectorFromCameraCenterToObjectWithSpeedApplied = new Vector(vectorFromCameraCenterToObject.x * this.speed.x, vectorFromCameraCenterToObject.y * this.speed.y);
         return Vector.scale(vectorFromCameraCenterToObjectWithSpeedApplied, deltaTime);
     }

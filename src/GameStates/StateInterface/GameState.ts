@@ -24,5 +24,5 @@ class GameState
         return this.shouldExit;
     }
 
-    getObjectPositionForCameraToFollow(): Vector { return new Vector(0, 0); }
+    getFocusedObject(): GameObject { return new GameObject(); }
 }

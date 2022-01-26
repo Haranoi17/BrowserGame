@@ -40,8 +40,8 @@ class StateMachine
         this.currentState().onDraw(canvas);
     }
 
-    getPositionForCameraToFollow(): Vector
+    getFocusedObject(): GameObject
     {
-        return this.currentState().getObjectPositionForCameraToFollow();
+        return this.currentState().getFocusedObject();
     }
 }

@@ -1,6 +1,5 @@
 class Game
 {
-
     public input: Input = new Input();
 
     readonly fixedUpdateTime: number;
@@ -26,16 +25,19 @@ class Game
 
     update(): void
     {
-        const canvasSize = new Vector(this.getCanvas().width, this.getCanvas().height);
         this.stateMachine.update(this.input, this.getDeltaTime());
-        this.camera.update(this.stateMachine.getPositionForCameraToFollow(), canvasSize, this.getDeltaTime());
+
+        const canvasSize = new Vector(this.getCanvas().width, this.getCanvas().height);
+        const objectToFollow = this.stateMachine.getFocusedObject();
+        this.camera.specificUpdate(objectToFollow, canvasSize, this.getDeltaTime());
+
         this.input.update();
         this.timer.update();
     }
 
     draw(): void
     {
-        this.camera.move(this.getCanvas());
+        this.camera.draw(this.getCanvas());
         this.stateMachine.draw(this.getCanvas());
     }
 
