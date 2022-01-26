@@ -23,6 +23,7 @@ class Camera extends GameObject
     {
         const vectorFromCameraCenterToObject = Vector.subtract(objectToFollow.position, this.calculateMiddleOfCameraPosition(canvasSize));
         const vectorFromCameraCenterToObjectWithSpeedApplied = new Vector(vectorFromCameraCenterToObject.x * this.speed.x, vectorFromCameraCenterToObject.y * this.speed.y);
+
         return Vector.scale(vectorFromCameraCenterToObjectWithSpeedApplied, deltaTime);
     }
 
