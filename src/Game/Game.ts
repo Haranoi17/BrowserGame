@@ -11,10 +11,11 @@ class Game
     readonly fixedUpdateTime: number;
 
     private timer: Timer = new Timer();
-    private camera: Camera = new Camera();
     private stateMachine: StateMachine = new StateMachine();
+    private renderer: Renderer = new Renderer(this.getCanvas());
 
     private fpsCounter: FpsCounter = new FpsCounter();
+
     private readonly debug: Debug = Debug.on;
     private readonly targetUpdatesPerSecond: number = 140;
 
@@ -22,8 +23,6 @@ class Game
     {
         const oneSecondInMilliseconds: number = 1000.0;
         this.fixedUpdateTime = oneSecondInMilliseconds / this.targetUpdatesPerSecond;
-
-        this.setupCanvas();
     }
 
     gameLoop(): void
@@ -36,9 +35,7 @@ class Game
     {
         this.stateMachine.update(this.input, this.getDeltaTime());
 
-        const canvasSize = new Vector(this.getCanvas().width, this.getCanvas().height);
-        const objectToFollow = this.stateMachine.getFocusedObject();
-        this.camera.specificUpdate(objectToFollow, canvasSize, this.getDeltaTime());
+        this.renderer.update(this.getDeltaTime());
 
         this.fpsCounter.update(this.getDeltaTime());
         this.input.update();
@@ -47,11 +44,11 @@ class Game
 
     draw(): void
     {
-        let ctx = this.getCanvas().getContext('2d');
-        ctx.clearRect(this.camera.position.x, this.camera.position.y, this.getCanvas().width, this.getCanvas().height);
+        this.renderer.clear();
 
-        this.camera.draw(this.getCanvas());
-        this.stateMachine.draw(this.getCanvas());
+        const objectToFollow = this.stateMachine.getFocusedObject();
+        this.renderer.lookAt(objectToFollow);
+        this.stateMachine.draw(this.renderer);
     }
 
     private getDeltaTime(): number
@@ -62,13 +59,6 @@ class Game
         }
 
         return this.timer.getDeltaTime();
-    }
-
-    private setupCanvas(): void
-    {
-        let canvas = document.getElementById("gameWindow") as HTMLCanvasElement;
-        canvas.width = 600;
-        canvas.height = 400;
     }
 
     private getCanvas(): HTMLCanvasElement

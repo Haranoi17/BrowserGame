@@ -13,7 +13,7 @@ class GameState
 
     onUpdate(input: Input, deltaTime: number): void { }
 
-    onDraw(canvas: HTMLCanvasElement): void { }
+    onDraw(renderer: Renderer): void { }
 
     onExit(): void { this.shouldExit = false; }
 
@@ -24,5 +24,5 @@ class GameState
         return this.shouldExit;
     }
 
-    getFocusedObject(): GameObject { return new GameObject(); }
+    getFocusedObject(): IFollowable { return new FollowableMock(); }
 }

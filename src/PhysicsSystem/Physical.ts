@@ -4,11 +4,12 @@ enum Dynamics
     dynamic = 1,
 }
 
-class Physical extends GameObject
+class Physical
 {
     private static gravityAcceleration: Vector = new Vector(0, 100);
     private static dragCoefficient: number = 5;
 
+    private position: Vector = new Vector(0, 0);
     private velocity: Vector = new Vector(0, 0);
     private acceleration: Vector = new Vector(0, 0);
     private dragForce: Vector = new Vector(0, 0);
@@ -20,9 +21,18 @@ class Physical extends GameObject
 
     constructor(dynamics: Dynamics = Dynamics.dynamic, kinematicSpeed: number = 100)
     {
-        super();
         this.dynamics = dynamics;
         this.kinematicSpeed = kinematicSpeed;
+    }
+
+    getPosition(): Vector
+    {
+        return this.position;
+    }
+
+    getVelocity(): Vector
+    {
+        return this.velocity;
     }
 
     update(deltaTime: number): void

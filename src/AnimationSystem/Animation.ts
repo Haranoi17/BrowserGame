@@ -9,22 +9,21 @@ class GameAnimation
 {
     private frames: Array<HTMLImageElement> = new Array<HTMLImageElement>();
     private iterator: number = 0;
-    private fps: number = 0;
+    private fps: FPS = new FPS(0);
     private timeline: number = 0;
     private readonly clipTime: number;
     private readonly frameTime: number;
-    private allImagesLoaded: boolean = false;
 
-    constructor(folderWithFrames: string, frameCount: number, fileExtension: ImageExtension, fps: number)
+    constructor(folderWithFrames: string, frameCount: Count, imageExtension: ImageExtension, fps: FPS)
     {
         this.fps = fps;
-        this.clipTime = frameCount / fps;
-        this.frameTime = 1.0 / fps;
+        this.clipTime = frameCount.value / fps.value;
+        this.frameTime = 1.0 / fps.value;
 
-        for (let i = 0; i < frameCount; i++)
+        for (let i = 0; i < frameCount.value; i++)
         {
             let frame = new Image();
-            frame.src = `${folderWithFrames}/${i}.${fileExtension}`
+            frame.src = `${folderWithFrames}/${i}.${imageExtension}`
             this.frames.push(frame);
         }
     }
