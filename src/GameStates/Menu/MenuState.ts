@@ -14,7 +14,7 @@ class MenuState extends GameState implements IDrawable//temporary hack
 
     onDraw(renderer: Renderer): void
     {
-        renderer.render(this);
+        renderer.addToRender(this);
     }
 
     //temporary hack

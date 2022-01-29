@@ -49,6 +49,8 @@ class Game
         const objectToFollow = this.stateMachine.getFocusedObject();
         this.renderer.lookAt(objectToFollow);
         this.stateMachine.draw(this.renderer);
+
+        this.renderer.render();
     }
 
     private getDeltaTime(): number

@@ -9,13 +9,14 @@ class Physical
     private static gravityAcceleration: Vector = new Vector(0, 100);
     private static dragCoefficient: number = 5;
 
-    private position: Vector = new Vector(0, 0);
-    private velocity: Vector = new Vector(0, 0);
-    private acceleration: Vector = new Vector(0, 0);
+    position: Vector = new Vector(0, 0);
+    velocity: Vector = new Vector(0, 0);
+    acceleration: Vector = new Vector(0, 0);
     private dragForce: Vector = new Vector(0, 0);
     private mass: number = 1;
     private dynamics: Dynamics;
     private kinematicSpeed: number;
+    private shouldFall: boolean;
 
     private appliedForces: Array<Vector> = new Array<Vector>();
 
@@ -40,6 +41,7 @@ class Physical
         if (this.isKinematic())
         {
             this.velocity = this.calculateKinematicVelocity(deltaTime);
+            this.kinematicFall(this.kinematicSpeed);
         }
         else
         {
@@ -55,6 +57,24 @@ class Physical
     applyForce(force: Vector): void
     {
         this.appliedForces.push(force);
+    }
+
+    fall()
+    {
+        this.shouldFall = true;
+    }
+
+    stopFalling()
+    {
+        this.shouldFall = false;
+    }
+
+    private kinematicFall(fallSpeed: number)
+    {
+        if (fallSpeed >= 0 && this.shouldFall)
+        {
+            this.velocity = new Vector(this.velocity.x, fallSpeed);
+        }
     }
 
     private isKinematic(): boolean

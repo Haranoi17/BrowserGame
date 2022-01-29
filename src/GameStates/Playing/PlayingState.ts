@@ -20,8 +20,8 @@ class PlayingState extends GameState implements IDrawable//temporary hack
 
     onDraw(renderer: Renderer): void
     {
-        renderer.render(this);
-        renderer.render(this.player);
+        renderer.addToRender(this);
+        renderer.addToRender(this.player);
     }
 
     //temporary hack
