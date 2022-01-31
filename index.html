@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser game</title>
     <link rel="stylesheet" href="/styles/layout.css">
-
+    
     <!-- Input System -->
     <script src="logic/InputSystem/Input.js"></script>
     
@@ -18,16 +18,32 @@
     <script src="logic/Utilities/Other.js"></script>
     <script src="logic/Utilities/Timer.js"></script>
     <script src="logic/Utilities/Vector.js"></script>
+    <script src="logic/Utilities/Canvas.js"></script>
     
-    <!-- Game Objects -->
-    <script src="logic/GameObjects/ObjectsInterface/GameObject.js"></script>
-    <script src="logic/GameObjects/Camera.js"></script>
-
     <!-- Physics System -->
     <script src="logic/PhysicsSystem/Physical.js"></script>
 
+    <!-- Interfaces -->
+    <script src="logic/Interfaces/Interfaces.js"></script>
+    <script src="logic/CollisionSystem/CollisionSystem.js"></script>
+    <!-- Mocks -->
+    <script src="logic/Interfaces/Mocks.js"></script>
+
+    <!-- Rendering System -->
+    <script src="logic/RenderingSystem/Renderer.js"></script>
+
+    <!-- Game Objects -->
+    <script src=""></script>
+    <script src="logic/GameObjects/Platform.js"></script>
+    <script src="logic/GameObjects/Player.js"></script>
+    <script src="logic/GameObjects/Camera.js"></script>
+
+
+    <!-- Animation System -->
+    <script src="logic/AnimationSystem/Animation.js"></script>
+    
     <!-- Game States -->
-    <script src="logic/GameStates/StateInterface/GameState.js"></script>
+    <script src="logic/GameStates/GameState/GameState.js"></script>
     <script src="logic/GameStates/Menu/MenuButton.js"></script>
     <script src="logic/GameStates/Menu/MenuState.js"></script>
     <script src="logic/GameStates/Playing/PlayingState.js"></script>
@@ -40,6 +56,10 @@
 
 <body>
     <canvas id="gameWindow"></canvas>
+
+    <div>
+        <p id="fps"></p>
+    </div>
 </body>
 
 <!-- After loading page start game logic -->

@@ -1,7 +1,9 @@
-class PlayingState extends GameState
+class PlayingState extends GameState implements IDrawable//temporary hack
 {
-    private physicalObject: Physical = new Physical(Dynamics.kinematic);
+    private player: Player = new Player();
+    private platforms: Array<Platform> = new Array<Platform>();
     private image: HTMLImageElement;
+    private collisionSystem: CollisionSystem = new CollisionSystem();
 
     constructor()
     {
@@ -9,54 +11,52 @@ class PlayingState extends GameState
 
         this.image = new Image();
         this.image.src = "/assets/99824.jpg";
+        this.platforms.push(new Platform(new Vector(0, 100), new Vector(100, 100)));
+        this.platforms.push(new Platform(new Vector(100, 150), new Vector(200, 100)));
+        this.platforms.push(new Platform(new Vector(200, 200), new Vector(300, 100)));
+        this.platforms.push(new Platform(new Vector(400, 100), new Vector(300, 100)))
+        this.platforms.push(new Platform(new Vector(100, -50), new Vector(300, 100)))
     }
 
     onUpdate(input: Input, deltaTime: number): void
     {
         this.handleInput(input);
 
-        this.physicalObject.update(deltaTime);
+
+        this.player.update(deltaTime);
+        this.collisionSystem.clearCollidables();
+        this.collisionSystem.updateCollidable(this.player);
+        for (let platform of this.platforms)
+        {
+            this.collisionSystem.updateCollidable(platform);
+        }
+        this.collisionSystem.updateCollisions();
     }
 
-    onDraw(canvas: HTMLCanvasElement): void
+    onDraw(renderer: Renderer): void
     {
-        let ctx = canvas.getContext('2d');
-
-        ctx.drawImage(this.image, -500, -500);
-
-        ctx.fillStyle = 'rgb(200, 0, 0)';
-        ctx.fillRect(this.physicalObject.position.x, this.physicalObject.position.y, 50, 50);
+        renderer.addToRender(this);
+        renderer.addToRender(this.player);
+        for (let platform of this.platforms)
+        {
+            renderer.addToRender(platform);
+        }
     }
 
-    getFocusedObject(): GameObject
+    //temporary hack
+    draw(canvas: Canvas): void
     {
-        return this.physicalObject;
+        canvas.drawImage(this.image, new Vector(-500, -500));
+    }
+
+    getFocusedObject(): IFollowable
+    {
+        return this.player;
     }
 
     private handleInput(input: Input): void
     {
-        let forceVector = new Vector(0, 0);
-        if (input.isPressed(KeyCode.W))
-        {
-            forceVector = Vector.add(forceVector, new Vector(0, -5000));
-        }
-
-        if (input.isPressed(KeyCode.S))
-        {
-            forceVector = Vector.add(forceVector, new Vector(0, 5000));
-        }
-
-        if (input.isPressed(KeyCode.A))
-        {
-            forceVector = Vector.add(forceVector, new Vector(-5000, 0));
-        }
-
-        if (input.isPressed(KeyCode.D))
-        {
-            forceVector = Vector.add(forceVector, new Vector(5000, 0));
-        }
-
-        this.physicalObject.applyForce(forceVector);
+        this.player.handleInput(input);
 
         if (input.justPressed(KeyCode.esc))
         {

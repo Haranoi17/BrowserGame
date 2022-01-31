@@ -35,12 +35,12 @@ class StateMachine
         this.switchStates();
     }
 
-    draw(canvas: HTMLCanvasElement): void
+    draw(renderer: Renderer): void
     {
-        this.currentState().onDraw(canvas);
+        this.currentState().onDraw(renderer);
     }
 
-    getFocusedObject(): GameObject
+    getFocusedObject(): IFollowable
     {
         return this.currentState().getFocusedObject();
     }
