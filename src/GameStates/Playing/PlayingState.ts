@@ -10,7 +10,7 @@ class PlayingState extends GameState implements IDrawable//temporary hack
         super();
 
         this.image = new Image();
-        this.image.src = "/assets/99824.jpg";
+        // this.image.src = "/assets/99824.jpg";
         this.platforms.push(new Platform(new Vector(0, 100), new Vector(100, 100)));
         this.platforms.push(new Platform(new Vector(100, 150), new Vector(200, 100)));
         this.platforms.push(new Platform(new Vector(200, 200), new Vector(300, 100)));

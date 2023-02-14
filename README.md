@@ -1,2 +1,3 @@
-# BrowserGame
-Creating game in browser with TypeScript with team
+# Gameplay gif
+Yellow lines come from gif compression.
+![](misc/gameplay.GIF)
